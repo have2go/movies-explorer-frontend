@@ -1,0 +1,30 @@
+.header {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 70px;
+    background-color: #073042;
+    /* background-color: white; */
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.header_white {
+    background-color: white;
+}
+
+@media screen and (max-width: 930px) {
+    .header {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        padding: 0 14px;
+    }
+}

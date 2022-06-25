@@ -1,0 +1,35 @@
+.navtab {
+    height: 66px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.navtab__container {
+    margin: 0 auto;
+}
+
+.navtab__link {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: white;
+    border-bottom: 1.4px solid white;
+}
+
+.navtab__link:nth-of-type(2) {
+    margin: 0 40px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .navtab__link {
+        font-size: 11px;
+    }
+
+    .navtab__link:nth-of-type(2) {
+        margin: 0 24px;
+    }
+}

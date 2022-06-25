@@ -1,0 +1,13 @@
+.logo {
+    width: 38px;
+    height: 38px;
+}
+
+.logo__img {
+    opacity: 1;
+    transition: ease-in-out .2s;
+}
+
+.logo__img:hover {
+    opacity: 0.6;
+}
