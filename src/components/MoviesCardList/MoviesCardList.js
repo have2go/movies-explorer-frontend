@@ -19,7 +19,7 @@ function MoviesCardList({ location }) {
                     />
                 ))}
             </section>
-            <ShowMore />
+            {location === "movies" ? <ShowMore /> : ""}
         </>
     );
 }

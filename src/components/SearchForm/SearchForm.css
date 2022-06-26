@@ -24,7 +24,6 @@
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0px;
-    outline: none;
     background-color: #F4F4F4;
 }
 
@@ -52,6 +51,11 @@
 .search-form__button:hover {
     opacity: .7;
 }
+
+.search-form__input:focus {
+    outline: 2px solid #3456F3;
+}
+
 
 @media screen and (max-width: 930px) {
     .search-form {
