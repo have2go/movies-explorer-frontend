@@ -1,10 +1,9 @@
 .footer {
-    height: 172px;
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 1140px;
-    padding: 0 70px 0;
+    margin: 0 70px 20px;
 }
 
 .footer__text {
@@ -55,15 +54,15 @@
     opacity: .6;
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 770px) {
     .footer {
-        padding: 0 30px;
+        margin: 0 30px 20px;
     }
 }
 
 @media screen and (max-width: 600px) {
     .footer {
-        padding: 0 10px;
+        margin: 0 10px;
     }
 
     .footer__container {
@@ -87,5 +86,9 @@
 
     .footer__date {
         margin-bottom: 10px;
+    }
+
+    .footer__date {
+        color: #A0A0A0;
     }
 }

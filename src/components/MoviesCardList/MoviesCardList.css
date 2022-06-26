@@ -1,8 +1,8 @@
 .card-list {
     display: grid;
-    grid-template-columns: repeat(4, 270px);
-    grid-column-gap: 20px;
-    grid-row-gap: 38px;
+    grid-template-columns: repeat(3, 360px);
+    grid-column-gap: 30px;
+    grid-row-gap: 60px;
     max-width: 1140px;
     width: 100%;
     margin: 0 auto;
@@ -28,18 +28,20 @@
 @media screen and (max-width: 730px) {
     .card-list {
         grid-template-columns: 1fr;
-        max-width: 352px;
+        max-width: 510px;
     }
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 570px) {
     .card-list {
-        padding: 50px 10px 0;
+        max-width: 400px;
     }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 420px) {
     .card-list {
         max-width: 299px;
+        padding-top: 40px;
+        grid-row-gap: 40px;
     }
 }

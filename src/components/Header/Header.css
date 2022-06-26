@@ -1,10 +1,8 @@
 .header {
     max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 70px;
-    background-color: #073042;
-    /* background-color: white; */
-    height: 74px;
+    margin: 0 70px;
+    padding: 18px 0 38px;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,18 +11,14 @@
     line-height: 16px;
 }
 
-.header_white {
-    background-color: white;
-}
-
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 770px) {
     .header {
-        padding: 0 30px;
+        margin: 0 30px;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
     .header {
-        padding: 0 14px;
+        margin: 0 14px;
     }
 }

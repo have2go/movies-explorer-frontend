@@ -5,16 +5,20 @@
 
 .nav__signup-link {
     text-decoration: none;
-    color: white;
+    color: black;
     margin-right: 30px;
+    opacity: 1;
+    transition: ease-in-out .2s;
 }
 
 .nav__signin-btn {
     text-decoration: none;
-    color: black;
-    background-color: #2BE080;
+    color: white;
+    background-color: #3456F3;
     padding: 8px 20px;
     border-radius: 3px;
+    opacity: 1;
+    transition: ease-in-out .2s;
 }
 
 .nav__movies {
@@ -25,6 +29,9 @@
     line-height: 18px;
     letter-spacing: 0em;
     text-align: right;
+    opacity: 1;
+    transition: ease-in-out .2s;
+    margin-left: 62px;
 }
 
 .nav__saved-movies {
@@ -35,30 +42,38 @@
     line-height: 18px;
     letter-spacing: 0em;
     text-align: right;
-    margin: 0 50px 0 20px;
-}
-
-.nav__account {
-    display: flex;
-}
-
-.nav__account-icon {
-    height: 30px;
-    width: 26px;
-    background-color: #F5F5F5;
-    display: block;
-}
-
-.nav a {
+    margin: 0 0 0 16px;
     opacity: 1;
     transition: ease-in-out .2s;
 }
 
-.nav a:hover {
+.nav-account {
+    display: flex;
+    opacity: 1;
+    transition: ease-in-out .2s;
+}
+
+.nav__signup-link:hover {
     opacity: .6;
 }
 
-@media screen and (max-width: 600px) {
+.nav__signin-btn:hover {
+    opacity: .6;
+}
+
+.nav__movies:hover {
+    opacity: .6;
+}
+
+.nav__saved-movies:hover {
+    opacity: .6;
+}
+
+.nav-account:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 400px) {
     .nav__signup-link {
         margin-right: 14px;
         font-size: 10px;

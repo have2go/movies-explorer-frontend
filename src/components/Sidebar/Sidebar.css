@@ -84,11 +84,17 @@
 }
 
 @media screen and (max-width: 600px) {
-    .sidebar__btn {
+    /* .sidebar__btn {
         right: 7px;
-    }
+    } */
 
     .sidebar {
         width: 100vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar__btn {
+        right: 7px;
     }
 }

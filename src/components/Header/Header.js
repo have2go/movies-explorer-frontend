@@ -7,7 +7,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
 function Header({ location }) {
     return (
-        <header className={`header ${location === "/" ? "" : "header_white"}`}>
+        <header className={"header"}>
             <Logo />
             {location === "/" ? (
                 <Navigation location={location} />

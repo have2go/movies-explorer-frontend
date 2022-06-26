@@ -13,7 +13,7 @@ function SearchForm() {
         <section className="search-form">
             <div className="search-form__container">
                 <input className="search-form__input" placeholder="Фильм" />
-                <button className="search-form__button"></button>
+                <button className="search-form__button">Найти</button>
             </div>
             <FilterCheckbox onClick={handleChange} />
         </section>

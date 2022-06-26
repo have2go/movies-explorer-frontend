@@ -5,7 +5,7 @@
 
 .about__container {
     max-width: 1140px;
-    padding: 0 70px 0;
+    margin: 0 70px 0;
 }
 
 .about__title {
@@ -63,7 +63,8 @@
 }
 
 .about__weeks:first-of-type {
-    background-color: #2BE080;
+    background-color: #3456F3;
+    color: white;
 }
 
 .about__dev {
@@ -76,9 +77,13 @@
     color: #A0A0A0;
 }
 
-@media screen and (max-width: 930px) {
+.about__text-block:last-of-type {
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 770px) {
     .about__container {
-        padding: 0 50px 0;
+        margin: 0 50px 0;
     }
 
     .about__paragraph {
@@ -86,14 +91,19 @@
         line-height: 18px;
     }
 
-    .about__text-block:last-of-type {
-        margin-left: 10px;
+    .about__title {
+        margin: 90px 0 0;
+    }
+
+    .about {
+        max-height: 608px;
+        margin-bottom: 90px;
     }
 }
 
 @media screen and (max-width: 600px) {
     .about__container {
-        padding: 0 18px 0;
+        margin: 0 18px;
     }
 
     .about__content {

@@ -1,11 +1,11 @@
 .techs {
     background-color: #F5F5F5;
-    padding-bottom: 90px;
+    padding: 100px 0;
 }
 
 .techs__container {
     max-width: 1140px;
-    padding: 0 70px 0;
+    margin: 0 70px 0;
 }
 
 .techs__title {
@@ -14,7 +14,7 @@
     line-height: 27px;
     letter-spacing: -0.04em;
     border-bottom: 1px solid #000;
-    padding: 100px 0 23px;
+    padding: 0 0 23px;
     margin: 0;
 }
 
@@ -59,9 +59,18 @@
     letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 770px) {
+    .techs {
+        padding: 90px 0;
+    }
+
     .techs__container {
-        padding: 0 50px 0;
+        margin: 0 50px 0;
+    }
+
+    .techs__paragraph {
+        font-size: 12px;
+        line-height: 18px;
     }
 
     .techs__list {
@@ -72,34 +81,25 @@
     .techs__tech-name {
         height: 57px;
         width: 84px;
-    }
-}
-
-@media screen and (max-width: 930px) {
-    .techs__paragraph {
         font-size: 12px;
-        line-height: 18px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 750px) {
     .techs__list {
         grid-template-rows: repeat(4, 57px);
         grid-template-columns: 84px 84px;
     }
-
-    .techs {
-        padding-bottom: 70px;
-    }
 }
 
-@media screen and (max-width: 767px) {
-    .techs__container {
-        padding: 0 18px 0;
+@media screen and (max-width: 410px) {
+    .techs {
+        padding: 70px 0;
+        background-color: white;
     }
 
-    .techs__title {
-        padding: 70px 0 28px;
+    .techs__container {
+        margin: 0 18px 0;
     }
 
     .techs__small-title {
@@ -109,8 +109,8 @@
     }
 
     .techs__paragraph {
-        margin: 0 auto 50px;
+        margin: 0 14px 50px;
         font-size: 11px;
         line-height: 26px;
     }
-}
+} 

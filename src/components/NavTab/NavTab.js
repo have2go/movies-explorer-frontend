@@ -4,19 +4,17 @@ import "./NavTab.css";
 
 function NavTab() {
     return (
-        <section className="navtab">
-            <nav className="navtab__container">
-                <a className="navtab__link" href="#about">
-                    О проекте
-                </a>
-                <a className="navtab__link" href="#techs">
-                    Технологии
-                </a>
-                <a className="navtab__link" href="#about-me">
-                    Студент
-                </a>
-            </nav>
-        </section>
+        <div className="navtab">
+            <a className="navtab__link" href="#about">
+                О проекте
+            </a>
+            <a className="navtab__link" href="#techs">
+                Технологии
+            </a>
+            <a className="navtab__link" href="#about-me">
+                Студент
+            </a>
+        </div>
     );
 }
 
