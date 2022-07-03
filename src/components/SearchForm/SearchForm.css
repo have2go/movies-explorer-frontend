@@ -48,6 +48,14 @@
     letter-spacing: 0px;
 }
 
+.search-form__error {
+    align-self: flex-start;
+    margin: 9px 0 0 22px;
+    font-size: 11px;
+    height: 11px;
+    color: red;
+}
+
 .search-form__button:hover {
     opacity: .7;
 }

@@ -4,10 +4,11 @@
 }
 
 .card__image {
-    max-width: 100%;
+    width: 100%;
     display: block;
     object-fit: cover;
     border-radius: 6px;
+    height: 201px;
 }
 
 .card__image-cover {
@@ -49,6 +50,10 @@
     transition: .3s;
     margin: 14px 14px 0 0;
     opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
 }
 
 .card__save-btn_active {
@@ -70,6 +75,10 @@
     transition: .3s;
     margin: 14px 14px 0 0;
     opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
 }
 
 .card__duration {
@@ -87,15 +96,23 @@
     /* padding-top: 6px; */
 }
 
-.card__image-cover:hover button {
+.card__image-cover:hover {
+    cursor: pointer;
+}
+
+.card:hover button {
     opacity: 1;
+}
+
+@media screen and (max-width: 1200px) {
+    .card__image {
+        height: 160px;
+    }
 }
 
 @media screen and (max-width: 930px) {
     .card__image {
-        max-width: 100%;
-        display: block;
-        object-fit: cover;
+        height: 190px;
     }
 
     .card {
@@ -107,4 +124,16 @@
     .card {
         max-width: 510px;
     }
+
+    .card__image {
+        height: 240px;
+    }
+
+}
+
+@media screen and (max-width: 420px) {
+    .card__image {
+        height: 168px;
+    }
+
 }

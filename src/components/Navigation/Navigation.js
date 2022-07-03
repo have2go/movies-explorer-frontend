@@ -4,8 +4,8 @@ import "./Navigation.css";
 import accImg from "../../images/account.svg";
 import { Link } from "react-router-dom";
 
-function Navigation({ location }) {
-    return location === "/" ? (
+function Navigation({ loggedIn }) {
+    return !loggedIn ? (
         <nav className="nav">
             <Link className="nav__signup-link" to="/signup">
                 Регистрация

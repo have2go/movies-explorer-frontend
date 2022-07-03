@@ -11,6 +11,11 @@
     justify-content: center;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (max-width: 1200px) {
     .card-list {
         grid-template-columns: repeat(3, 270px);

@@ -7,10 +7,10 @@ import Portfolio from "../Portfolio/Portfolio";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-function Main(props) {
+function Main({ loggedIn }) {
     return (
         <>
-            <Header location={props.location} />
+            <Header loggedIn={loggedIn} />
             <main className="main">
                 <Promo />
                 <AboutProject />

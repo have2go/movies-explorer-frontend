@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import './FilterCheckbox.css';
+import "./FilterCheckbox.css";
 
 function FilterCheckbox(props) {
     return (
-        <div className='filter-checkbox'>
-            <button className='filter-checkbox__btn' onClick={props.onClick}></button>
-            <p className='filter-checkbox__text'>Короткометражки</p>
+        <div className="filter-checkbox">
+            <button
+                className={`filter-checkbox__btn ${props.isCheckboxOn ? "filter-checkbox__btn_active" : ""}`}
+                onClick={props.onClick} type="button"></button>
+            <p className="filter-checkbox__text">Короткометражки</p>
         </div>
     );
 }

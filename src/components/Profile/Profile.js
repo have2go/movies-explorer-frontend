@@ -1,25 +1,78 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Header from "../Header/Header";
+import useFormAndValidation from "../../hooks/useFormAndValidation";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import "./Profile.css";
 
-function Profile(props) {
+function Profile({ loggedIn, onUpdate, isUpdated, isUpdateFailed, onSignOut }) {
+    const { values, handleChange, isValid, setIsValid, setValues } =
+        useFormAndValidation();
+    const currentUser = useContext(CurrentUserContext);
+
+    useEffect(() => {
+        setValues(currentUser);
+        setIsValid(false);
+    }, [currentUser, setValues, setIsValid]);
+
+    function updateHandler(e) {
+        e.preventDefault();
+        onUpdate(values.name, values.email);
+    }
+
     return (
         <>
-            <Header location={props.location} />
-            <section className="profile">
-                <h1 className="profile__greeting">Привет, Алексей!</h1>
+            <Header loggedIn={loggedIn} />
+            <form className="profile" onSubmit={updateHandler}>
+                <h1 className="profile__greeting">{`Привет, ${currentUser.name}!`}</h1>
                 <div className="profile__container">
                     <p className="profile__input-name">Имя</p>
-                    <input className="profile__input"/>
+                    <input
+                        className="profile__input"
+                        type="text"
+                        name="name"
+                        value={values.name || ""}
+                        onChange={handleChange}
+                        minLength="2"
+                        maxLength="30"
+                        required
+                    />
                 </div>
                 <div className="profile__container">
                     <p className="profile__input-name">E-mail</p>
-                    <input className="profile__input"/>
+                    <input
+                        className="profile__input"
+                        type="email"
+                        name="email"
+                        value={values.email || ""}
+                        onChange={handleChange}
+                    />
                 </div>
-                <button className="profile__edit-btn" type="button">Редактировать</button>
-                <button className="profile__logout-btn" type="button">Выйти из аккаунта</button>
-            </section>
+                <span
+                    className={`profile__upd-result ${
+                        isUpdated || isUpdateFailed
+                            ? "profile__upd-result_visible"
+                            : ""
+                    }`}>
+                    {isUpdateFailed ? "Произошла ошибка" : "Данные изменены!"}
+                </span>
+                <button
+                    className="profile__edit-btn"
+                    type="submit"
+                    disabled={
+                        !isValid ||
+                        (values.name === currentUser.name &&
+                            values.email === currentUser.email)
+                    }>
+                    Редактировать
+                </button>
+                <button
+                    onClick={onSignOut}
+                    className="profile__logout-btn"
+                    type="button">
+                    Выйти из аккаунта
+                </button>
+            </form>
         </>
     );
 }

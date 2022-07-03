@@ -61,7 +61,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin: 204px 0 16px;
+    margin: 136px 0 16px;
     opacity: 1;
     transition: ease-in-out .2s;
 }
@@ -80,6 +80,18 @@
     margin-bottom: 70px;
     opacity: 1;
     transition: ease-in-out .2s;
+}
+
+.profile__upd-result {
+    margin-top: 50px;
+}
+
+.profile__upd-result {
+    color: white;
+}
+
+.profile__upd-result_visible {
+    color: black;
 }
 
 .profile__edit-btn:hover {

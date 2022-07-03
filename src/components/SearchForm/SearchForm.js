@@ -1,22 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import useFormAndValidation from "../../hooks/useFormAndValidation";
 
 import "./SearchForm.css";
 
-function SearchForm() {
-    function handleChange(e) {
+function SearchForm({ onSearch, isCheckboxOn, handleFilterChange, location }) {
+    const { values, handleChange, setValues } = useFormAndValidation();
+
+    const [error, setError] = useState("");
+
+    function handleSubmit(e) {
         e.preventDefault();
-        e.target.classList.toggle("filter-checkbox__btn_active");
+        if (!values.text) {
+            setError("Нужно ввести ключевое слово");
+        } else {
+            onSearch(values.text);
+            // resetForm();
+        }
     }
 
+    useEffect(() => {
+        const inputText = location.pathname === "/movies" ? JSON.parse(localStorage.getItem("inputText")) : JSON.parse(localStorage.getItem("savedMoviesInputText"));
+
+        if (inputText) {
+            setValues({ text: inputText });
+        }
+    }, [setValues, location.pathname]);
+
+    useEffect(() => {
+        if (values.text !== "") {
+            setError("");
+        }
+    }, [values.text]);
+
     return (
-        <section className="search-form">
+        <form className="search-form" onSubmit={handleSubmit} noValidate>
             <div className="search-form__container">
-                <input className="search-form__input" placeholder="Фильм" required />
-                <button className="search-form__button">Найти</button>
+                <input
+                    className="search-form__input"
+                    placeholder="Фильм"
+                    type="text"
+                    name="text"
+                    value={values.text || ""}
+                    onChange={handleChange}
+                    required
+                />
+                <button className="search-form__button" type="submit">
+                    Найти
+                </button>
             </div>
-            <FilterCheckbox onClick={handleChange} />
-        </section>
+            <span className="search-form__error">{error}</span>
+            <FilterCheckbox
+                onClick={handleFilterChange}
+                isCheckboxOn={isCheckboxOn}
+            />
+        </form>
     );
 }
 

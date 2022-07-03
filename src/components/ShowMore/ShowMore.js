@@ -2,10 +2,10 @@ import React from "react";
 
 import "./ShowMore.css";
 
-function ShowMore() {
+function ShowMore(props) {
     return (
         <div className="show-more">
-            <button className="show-more__btn" type="button">Ещё</button>
+            <button className="show-more__btn" type="button" onClick={props.onClick}>Ещё</button>
         </div>
     );
 }
