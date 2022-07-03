@@ -65,7 +65,9 @@ function Form({ validation, onSubmit, type, title, error }) {
                             ? "Зарегистрироваться"
                             : "Войти"}
                     </button>
-                    {error && <span className="form__error">При регистрации произошла ошибка</span>}
+                    {error && <span className="form__error">{type === "register"
+                            ? "При регистрации произошла ошибка"
+                            : "Что-то пошло не так..."}</span>}
                     <div className="form__underline">
                         {type === "register" ? (
                             <>
