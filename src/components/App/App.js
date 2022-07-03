@@ -25,6 +25,7 @@ function App() {
     const [isUserUpdated, setIsUserUpdated] = useState(false);
     const [isUserUpdateFailed, setIsUserUpdateFailed] = useState(false);
     const [localSavedMovies, setLocalSavedMovies] = useState([]);
+    const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
 
     function handleRegister(name, email, password) {
         Api.register(name, email, password)
@@ -48,6 +49,8 @@ function App() {
         localStorage.removeItem("savedMoviesInputText");
         localStorage.removeItem("checkbox");
         localStorage.removeItem("filteredMovies");
+        localStorage.removeItem("checkboxSaved");
+        localStorage.removeItem("filteredSavedMovies");
         setLoggedIn(false);
         history.push("/");
     }
@@ -133,7 +136,11 @@ function App() {
                 const newLocalSaved = localSaved.filter(
                     (localMovie) => localMovie.movieId !== movieToDelete.movieId
                 );
+                const newLocalSavedFiltered = newLocalSaved.filter((movie) => {
+                    return movie.duration <= 40;
+                })
                 setLocalSavedMovies(newLocalSaved);
+                setFilteredSavedMovies(newLocalSavedFiltered);
                 localStorage.setItem(
                     "savedMovies",
                     JSON.stringify(newLocalSaved)
@@ -164,7 +171,7 @@ function App() {
                     console.log(err);
                 });
         }
-    }, [history]);
+    }, [loggedIn]);
 
     useEffect(() => {
         if (loggedIn) {
@@ -216,6 +223,8 @@ function App() {
                             handleDeleteMovie={handleDeleteMovie}
                             localSavedMovies={localSavedMovies}
                             setLocalSavedMovies={setLocalSavedMovies}
+                            filteredSavedMovies={filteredSavedMovies}
+                            setFilteredSavedMovies={setFilteredSavedMovies}
                         />
                         <ProtectedRoute
                             exact

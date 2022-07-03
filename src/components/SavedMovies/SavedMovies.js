@@ -3,7 +3,6 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import "./SavedMovies.css";
 
@@ -13,20 +12,22 @@ function SavedMovies({
     location,
     localSavedMovies,
     setLocalSavedMovies,
+    filteredSavedMovies,
+    setFilteredSavedMovies,
 }) {
     const [isCheckboxOn, setIsCheckboxOn] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [loadingError, setLoadingError] = useState("");
     const [isNotFound, setIsNotFound] = useState(false);
-    const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
+    
 
-    // const currentUser = useContext(CurrentUserContext);
     useEffect(() => {
         const filteredArr = JSON.parse(
             localStorage.getItem("filteredSavedMovies")
         );
-        setFilteredSavedMovies(filteredArr);
-
+        if (filteredArr) {
+            setFilteredSavedMovies(filteredArr);
+        }
         const checkbox = JSON.parse(localStorage.getItem("checkboxSaved"));
         if (checkbox) {
             setIsCheckboxOn(true);
@@ -39,9 +40,6 @@ function SavedMovies({
         setLoadingError(false);
         setIsLoading(true);
         const savedMoviesArr = JSON.parse(localStorage.getItem("savedMovies"));
-        // const thisOwnersMovies = savedMoviesArr.filter(
-        //     (movie) => movie.owner === currentUser._id
-        // );
         sortMovies(savedMoviesArr, text);
     }
 

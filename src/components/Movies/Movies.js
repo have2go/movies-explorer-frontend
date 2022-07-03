@@ -21,7 +21,10 @@ function Movies({ loggedIn, handleSaveMovie, handleDeleteMovie, location }) {
         const filteredArr = JSON.parse(
             localStorage.getItem("filteredMovies")
         );
-        setFilteredMovies(filteredArr);
+        if (filteredArr) {
+            setFilteredMovies(filteredArr);
+        }
+        
         if (moviesArr && location.pathname === "/movies") {
             setMovies(moviesArr);
         } else {
@@ -110,6 +113,7 @@ function Movies({ loggedIn, handleSaveMovie, handleDeleteMovie, location }) {
             return movie.duration <= 40;
         });
     }
+    // console.log(movies, filteredMovies)
 
     return (
         <>
