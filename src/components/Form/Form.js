@@ -4,7 +4,16 @@ import Logo from "../Logo/Logo";
 import "./Form.css";
 
 function Form({ validation, onSubmit, type, title, error }) {
-    const { values, handleChange, errors, isValid, resetForm } = validation;
+    const { values, handleChange, errors, isValid, setIsValid, resetForm } =
+        validation;
+
+    function handleEmailChange(e) {
+        handleChange(e);
+
+        e.target.value.match(/^[_a-z0-9-\+-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i)
+            ? setIsValid(true)
+            : setIsValid(false);
+    }
 
     return (
         <>
@@ -35,7 +44,7 @@ function Form({ validation, onSubmit, type, title, error }) {
                             type="email"
                             name="email"
                             value={values.email || ""}
-                            onChange={handleChange}
+                            onChange={handleEmailChange}
                             required
                         />
                         <span className="form__span">{errors.email}</span>
@@ -61,13 +70,15 @@ function Form({ validation, onSubmit, type, title, error }) {
                         }`}
                         type="submit"
                         disabled={!isValid}>
-                        {type === "register"
-                            ? "Зарегистрироваться"
-                            : "Войти"}
+                        {type === "register" ? "Зарегистрироваться" : "Войти"}
                     </button>
-                    {error && <span className="form__error">{type === "register"
-                            ? "При регистрации произошла ошибка"
-                            : "Что-то пошло не так..."}</span>}
+                    {error && (
+                        <span className="form__error">
+                            {type === "register"
+                                ? "При регистрации произошла ошибка"
+                                : "Что-то пошло не так..."}
+                        </span>
+                    )}
                     <div className="form__underline">
                         {type === "register" ? (
                             <>

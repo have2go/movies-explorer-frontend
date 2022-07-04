@@ -20,7 +20,7 @@ function MoviesCardList({
     const [moviesToRender, setMoviesToRender] = useState([]);
 
     const getCount = (windowSize) => {
-        if (windowSize >= 1280) {
+        if (windowSize >= 931) {
             return { init: 12, more: 3 };
         }
         if (windowSize > 480 && windowSize <= 768) {
@@ -60,7 +60,7 @@ function MoviesCardList({
     return (
         <>
             <section className="card-list">
-                {moviesToRender.map((card) => (
+                {(location.pathname === "/movies" ? moviesToRender : movies).map((card) => (
                     <MoviesCard
                         card={card}
                         key={card.id || card.movieId}

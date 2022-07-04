@@ -17,12 +17,8 @@ function MoviesCard({ handleSaveMovie, handleDeleteMovie, card, location }) {
     }
 
     function handleDelete() {
-        handleDeleteMovie(card);
+        handleDeleteMovie(location.pathname === "/movies" ? card.id : card.movieId);
         setIsSaved(!isSaved);
-    }
-
-    function handleDeleteSavedMovie() {
-        handleDelete();
     }
 
     function handleDuration(duration) {
@@ -53,7 +49,7 @@ function MoviesCard({ handleSaveMovie, handleDeleteMovie, card, location }) {
                 <button
                     className="card__remove-btn"
                     type="button"
-                    onClick={handleDeleteSavedMovie}></button>
+                    onClick={handleDelete}></button>
             )}
             <a href={card.trailerLink} target="_blank" rel="noreferrer">
                 <div className="card__image-cover"></div>

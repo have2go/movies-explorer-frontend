@@ -20,6 +20,16 @@ function Profile({ loggedIn, onUpdate, isUpdated, isUpdateFailed, onSignOut }) {
         onUpdate(values.name, values.email);
     }
 
+    function handleEmailChange(e) {
+        handleChange(e);
+
+        e.target.value.match(
+            /^[_a-z0-9-\+-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i
+        )
+            ? setIsValid(true)
+            : setIsValid(false);
+    }
+
     return (
         <>
             <Header loggedIn={loggedIn} />
@@ -45,7 +55,7 @@ function Profile({ loggedIn, onUpdate, isUpdated, isUpdateFailed, onSignOut }) {
                         type="email"
                         name="email"
                         value={values.email || ""}
-                        onChange={handleChange}
+                        onChange={handleEmailChange}
                     />
                 </div>
                 <span

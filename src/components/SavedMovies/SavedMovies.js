@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
@@ -19,19 +19,9 @@ function SavedMovies({
     const [isLoading, setIsLoading] = useState(false);
     const [loadingError, setLoadingError] = useState("");
     const [isNotFound, setIsNotFound] = useState(false);
-    
 
     useEffect(() => {
-        const filteredArr = JSON.parse(
-            localStorage.getItem("filteredSavedMovies")
-        );
-        if (filteredArr) {
-            setFilteredSavedMovies(filteredArr);
-        }
-        const checkbox = JSON.parse(localStorage.getItem("checkboxSaved"));
-        if (checkbox) {
-            setIsCheckboxOn(true);
-        }
+        setLocalSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
     }, [])
 
     function handleSearch(text) {
@@ -44,13 +34,7 @@ function SavedMovies({
     }
 
     function sortMovies(movies, text) {
-        const moviesToSort = isCheckboxOn
-            ? movies.filter((movie) => {
-                  return movie.duration <= 40;
-              })
-            : movies;
-
-        const result = moviesToSort.filter((movieObj) => {
+        const result = movies.filter((movieObj) => {
             const { nameRU, nameEN } = movieObj;
 
             const isFilm =
@@ -58,7 +42,6 @@ function SavedMovies({
                 (nameEN !== null && checkMatch(nameEN, text));
             return isFilm;
         });
-        localStorage.setItem("savedMoviesInputText", JSON.stringify(text));
 
         if (result.length === 0) {
             setIsNotFound(true);
@@ -68,6 +51,7 @@ function SavedMovies({
 
         setIsLoading(false);
         setLocalSavedMovies(result);
+        setFilteredSavedMovies(filterMovies(result))
     }
 
     function checkMatch(name, text) {
@@ -79,18 +63,7 @@ function SavedMovies({
     }
 
     function handleFilterChange() {
-        if (localSavedMovies.length !== 0) {
-            !isCheckboxOn ? handleFilteredMovies() : setLocalSavedMovies(localSavedMovies);
-            setIsCheckboxOn(!isCheckboxOn);
-        } else {
-            setIsCheckboxOn(!isCheckboxOn);
-        }
-        localStorage.setItem("checkboxSaved", JSON.stringify(!isCheckboxOn));
-    }
-
-    function handleFilteredMovies() {
-        setFilteredSavedMovies(filterMovies(localSavedMovies));
-        localStorage.setItem("filteredSavedMovies", JSON.stringify(filteredSavedMovies));
+        setIsCheckboxOn(!isCheckboxOn);
     }
 
     function filterMovies(array) {

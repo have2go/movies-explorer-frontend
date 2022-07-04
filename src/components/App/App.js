@@ -46,11 +46,8 @@ function App() {
         localStorage.removeItem("movies");
         localStorage.removeItem("inputText");
         localStorage.removeItem("savedMovies");
-        localStorage.removeItem("savedMoviesInputText");
         localStorage.removeItem("checkbox");
         localStorage.removeItem("filteredMovies");
-        localStorage.removeItem("checkboxSaved");
-        localStorage.removeItem("filteredSavedMovies");
         setLoggedIn(false);
         history.push("/");
     }
@@ -122,10 +119,10 @@ function App() {
             });
     }
 
-    function handleDeleteMovie(movie) {
+    function handleDeleteMovie(movieId) {
         const savedMoviesArr = JSON.parse(localStorage.getItem("savedMovies"));
-        const movieToDelete = savedMoviesArr.find((savedMovie) =>
-            savedMovie.movieId === movie.movieId ? movie.movieId : movie.id
+        const movieToDelete = savedMoviesArr.find(
+            (savedMovie) => savedMovie.movieId === movieId
         );
 
         Api.deleteMovie(movieToDelete._id)
@@ -138,7 +135,7 @@ function App() {
                 );
                 const newLocalSavedFiltered = newLocalSaved.filter((movie) => {
                     return movie.duration <= 40;
-                })
+                });
                 setLocalSavedMovies(newLocalSaved);
                 setFilteredSavedMovies(newLocalSavedFiltered);
                 localStorage.setItem(
@@ -180,7 +177,10 @@ function App() {
                     const thisOwnersMovies = res.filter(
                         (movie) => movie.owner === currentUser._id
                     );
-                    localStorage.setItem("savedMovies", JSON.stringify(thisOwnersMovies));
+                    localStorage.setItem(
+                        "savedMovies",
+                        JSON.stringify(thisOwnersMovies)
+                    );
                     setLocalSavedMovies(thisOwnersMovies);
                 })
                 .catch((err) => {
@@ -192,7 +192,7 @@ function App() {
     useEffect(() => {
         setIsUserUpdated(false);
         setIsUserUpdateFailed(false);
-    }, [location])
+    }, [location]);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -237,16 +237,32 @@ function App() {
                             isUpdated={isUserUpdated}
                             isUpdateFailed={isUserUpdateFailed}
                         />
-                        <Route path="/signup">
+                        {/* <Route path="/signup">
                             <Register
                                 error={signupError}
                                 onSubmit={handleRegister}
                             />
-                        </Route>
-                        <Route path="/signin">
+                        </Route> */}
+                        <ProtectedRoute
+                            exact
+                            path="/signup"
+                            loggedIn={!loggedIn}
+                            component={Register}
+                            error={signupError}
+                            onSubmit={handleRegister}
+                        />
+                        {/* <Route path="/signin">
                             <Login error={signinError} onSubmit={handleLogin} />
-                        </Route>
-                        <Route component={NotFound} />
+                        </Route> */}
+                        <ProtectedRoute
+                            exact
+                            path="/signin"
+                            loggedIn={!loggedIn}
+                            component={Login}
+                            error={signinError}
+                            onSubmit={handleLogin}
+                        />
+                        <Route component={NotFound} history={history} />
                     </Switch>
                 </div>
             </div>
