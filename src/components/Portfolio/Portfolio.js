@@ -7,14 +7,14 @@ function Portfolio() {
         <section className="portfolio">
             <div className="portfolio__container">
                 <h4 className="portfolio__title">Портфолио</h4>
-                <a
+                {/* <a
                     className="portfolio__link"
                     href="https://have2go.github.io/how-to-learn/"
                     target="_blank"
                     rel="noreferrer">
                     Статичный сайт
                     <span className="portfolio__arrow"></span>
-                </a>
+                </a> */}
                 <a
                     className="portfolio__link"
                     href="https://have2go.github.io/russian-travel/"
@@ -25,7 +25,7 @@ function Portfolio() {
                 </a>
                 <a
                     className="portfolio__link"
-                    href="https://ad.mesto.nomoredomains.xyz/"
+                    href="https://github.com/have2go/react-mesto-api-full"
                     target="_blank"
                     rel="noreferrer">
                     Одностраничное приложение
