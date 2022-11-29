@@ -1,5 +1,4 @@
 import { api_url } from "./constants";
-// const devUrl = "http://localhost:3001";
 
 function resolveCheck(res) {
     if (res.ok) {
